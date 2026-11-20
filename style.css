@@ -1,0 +1,237 @@
+/* ============================================================
+   1. 設計變數：想改顏色、間距，只要改這一區
+   ============================================================ */
+:root {
+  /* ★ 改這裡：想換網站配色，只改下面三個顏色 */
+  --bg: #f3f5f9;          /* 背景：雲白 */
+  --ink: #16202e;         /* 深藍墨色 */
+  --muted: #6b7686;       /* 次要文字 */
+  --line: #d9dee8;        /* 細線 */
+  --accent: #3d5afe;      /* 鈷藍：只用在 hover 與按鈕狀態 */
+  --pad: clamp(18px, 3.2vw, 44px);   /* 左右邊距 */
+  --big: clamp(40px, 10.5vw, 168px); /* Hero 名字大小 */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --roles-size: clamp(13px, 1.6vw, 20px);  /* 職稱字級 */
+  --roles-bottom: 36px;                     /* 職稱離畫面底部的距離 */
+  --font: "Bricolage Grotesque", "Helvetica Neue", Arial, "PingFang HK", "Noto Sans TC", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+img, video { display: block; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ============================================================
+   2. 名字（brand）與導覽：固定在畫面上
+   ============================================================ */
+.brand {
+  position: fixed;
+  z-index: 50;
+  left: var(--pad);
+  /* Hero 時：名字貼在職稱正上方 */
+  top: calc(100svh - var(--roles-bottom) - var(--roles-size) * 1.3 - var(--big) * 0.88);
+  font-size: var(--big);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: #fff;
+  mix-blend-mode: difference;               /* 在深色/淺色背景上都看得清楚 */
+  transition: top .8s var(--ease), font-size .8s var(--ease), letter-spacing .8s var(--ease), opacity .3s;
+}
+body.compact .brand {                         /* 捲動後：回到左上角 */
+  top: 18px;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+
+.nav {
+  position: fixed;
+  z-index: 50;
+  top: 18px;
+  right: var(--pad);
+  display: flex;
+  gap: clamp(14px, 2.4vw, 32px);
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+.nav a { position: relative; }
+.nav a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: left;
+  transition: transform .35s var(--ease);
+}
+.nav a:hover::after { transform: scaleX(1); }
+
+/* 手機版全螢幕選單（電腦版隱藏，見第 9 區） */
+.menu-btn {
+  display: none;
+  position: fixed; z-index: 60; top: 12px; right: var(--pad);
+  padding: 6px 0; font-size: 17px; font-weight: 500;
+  color: #fff; mix-blend-mode: difference;
+}
+.menu {
+  position: fixed; inset: 0; z-index: 40;
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+  padding: 80px var(--pad) 40px;
+  background: var(--bg);
+  opacity: 0; visibility: hidden;
+  transition: opacity .35s, visibility .35s;
+}
+.menu.open { opacity: 1; visibility: visible; }
+.menu a {
+  font-size: clamp(52px, 17vw, 110px); font-weight: 600; letter-spacing: -0.04em; line-height: 1.05;
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .6s var(--ease), transform .6s var(--ease), color .2s;
+}
+.menu.open a { opacity: 1; transform: none; }
+.menu.open a:nth-child(2) { transition-delay: .05s; }
+.menu.open a:nth-child(3) { transition-delay: .1s; }
+.menu.open a:nth-child(4) { transition-delay: .15s; }
+.menu a:active { color: var(--accent); }
+.menu-foot { margin-top: 36px; color: var(--muted); font-size: 15px; }
+body.menu-open { overflow: hidden; }
+body.menu-open:not(.compact) .brand { opacity: 0; }   /* 選單打開時，隱藏 Hero 的大名字避免重疊 */
+
+/* ============================================================
+   3. Hero
+   ============================================================ */
+.hero { position: relative; height: 100svh; min-height: 520px; background: linear-gradient(160deg, #9fb4ff, #dfe7ff 55%, #fff3e6); overflow: hidden; }
+.hero-img { width: 100%; height: 100%; object-fit: cover; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,16,30,.45), transparent 45%); pointer-events: none; }
+.hero-roles { position: absolute; z-index: 2; left: var(--pad); bottom: var(--roles-bottom); color: #fff; font-size: var(--roles-size); line-height: 1.3; white-space: nowrap; }
+
+/* 進場動畫：整頁只有這一個，Hero 圖片慢慢淡入 */
+@keyframes heroIn { from { opacity: 0; transform: scale(1.04); } to { opacity: 1; transform: none; } }
+.hero-img { animation: heroIn 1.4s var(--ease) both; }
+
+/* ============================================================
+   4. 區塊共用
+   ============================================================ */
+.section { padding: clamp(72px, 11vw, 160px) var(--pad) 0; }
+.section-title { font-size: clamp(30px, 4.4vw, 64px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: clamp(24px, 3vw, 48px); }
+
+/* ============================================================
+   5. 兩個主打專案
+   ============================================================ */
+.showcase-list { display: grid; gap: clamp(48px, 7vw, 110px); }
+.show { display: grid; grid-template-columns: 1.7fr 1fr; gap: clamp(20px, 3vw, 48px); align-items: end; cursor: pointer; }
+.show:nth-child(even) { grid-template-columns: 1fr 1.7fr; }
+.show:nth-child(even) .media { order: 2; }
+.show .media { aspect-ratio: 16 / 10; }
+.show h3 { font-size: clamp(24px, 3vw, 44px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+.show .kind { color: var(--muted); margin: 8px 0 14px; }
+.show p { max-width: 38ch; }
+
+/* ============================================================
+   6. 作品卡片（Showcase 與 Gallery 共用）
+   ============================================================ */
+.media { position: relative; overflow: hidden; background: #dfe5f0; border-radius: 4px; }
+.media > img, .media > video, .media > .ph { width: 100%; height: 100%; object-fit: cover; }
+.media .pv { position: absolute; inset: 0; opacity: 0; transition: opacity .35s; }
+.media .pv.ready { opacity: 1; }
+.ph { background: linear-gradient(135deg, hsl(var(--h) 75% 78%), hsl(calc(var(--h) + 40) 80% 90%)); }
+.media img, .media video, .media .ph { transition: transform .8s var(--ease); }
+.card:hover .media > :first-child, .show:hover .media > :first-child { transform: scale(1.035); }
+
+/* Gallery 選單 */
+.work-head { display: block; }
+.controls { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-bottom: 28px; border-top: 1px solid var(--line); padding-top: 16px; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.filters button { color: var(--muted); padding: 2px 0; border-bottom: 1px solid transparent; transition: color .2s; }
+.filters button:hover { color: var(--ink); }
+.filters button.active { color: var(--ink); border-bottom-color: var(--accent); }
+.density { display: flex; gap: 4px; }
+.density button { width: 32px; height: 32px; border-radius: 50%; color: var(--muted); }
+.density button.active { background: var(--ink); color: var(--bg); }
+
+/* Grid：由 data-size 決定欄數 */
+.grid { --cols: 3; display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: clamp(14px, 2vw, 28px); }
+.grid[data-size="large"] { --cols: 2; }
+.grid[data-size="small"] { --cols: 4; }
+.card { cursor: pointer; }
+.card .media { aspect-ratio: 4 / 3; }
+.card .meta { display: flex; justify-content: space-between; gap: 12px; padding-top: 10px; font-size: 15px; }
+.card .meta span { color: var(--muted); }
+.card.hide { display: none; }
+
+/* 捲動出現：很輕，只有位移與淡入 */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ============================================================
+   7. About / Contact / Footer
+   ============================================================ */
+.about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: start; }
+.about-body { max-width: 62ch; display: grid; gap: 18px; color: var(--muted); }
+.about-photo { aspect-ratio: 4 / 5; border-radius: 4px; overflow: hidden; background: linear-gradient(135deg, #c9d6ff, #f1e6ff); }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-lead { color: var(--ink); font-size: clamp(22px, 2.6vw, 34px); line-height: 1.25; letter-spacing: -0.02em; }
+.contact-mail { display: inline-block; font-size: clamp(28px, 6vw, 88px); font-weight: 600; letter-spacing: -0.04em; line-height: 1; border-bottom: 2px solid var(--ink); transition: color .25s, border-color .25s; }
+.contact-mail:hover { color: var(--accent); border-color: var(--accent); }
+.contact-list { margin-top: clamp(28px, 4vw, 56px); max-width: 640px; border-bottom: 1px solid var(--line); }
+.contact-list a { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); transition: color .2s, padding .3s var(--ease); }
+.contact-list a span:first-child { color: var(--muted); }
+.contact-list a:hover { color: var(--accent); padding-left: 8px; }
+.footer { padding: clamp(80px, 10vw, 140px) var(--pad) 32px; color: var(--muted); font-size: 14px; }
+
+/* ============================================================
+   8. Lightbox（點擊放大）
+   ============================================================ */
+.lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(243,245,249,.97); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; padding: 10px var(--pad) 18px; opacity: 0; visibility: hidden; transition: opacity .35s, visibility .35s; }
+.lightbox.open { opacity: 1; visibility: visible; }
+.lb-stage { min-height: 0; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; transform: scale(.97); transition: transform .5s var(--ease); }
+.lightbox.open .lb-stage { transform: none; }
+.lb-stage img, .lb-stage video, .lb-stage iframe, .lb-stage .ph { max-width: 100%; max-height: 100%; border-radius: 4px; }
+.lb-stage iframe { width: min(100%, 1100px); aspect-ratio: 16 / 9; border: 0; }
+.lb-stage .ph { width: min(100%, 900px); aspect-ratio: 16 / 10; }
+.lb-caption { padding-top: 14px; max-width: 70ch; max-height: 30vh; overflow-y: auto; }
+.lb-caption h3 { font-size: 22px; letter-spacing: -0.02em; }
+.lb-caption p { color: var(--muted); }
+.lb-stage img, .lb-stage video { width: 100%; height: 100%; object-fit: contain; }
+.lb-bar { display: flex; justify-content: flex-end; padding-bottom: 6px; }
+.lb-bar button { padding: 10px 0; font-weight: 500; }
+.lb-main { min-height: 0; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: stretch; gap: clamp(2px, 2vw, 24px); }
+.lb-arrow { align-self: center; font-size: 30px; line-height: 1; padding: 14px 10px; transition: color .2s, transform .3s var(--ease); }
+.lb-arrow:hover { color: var(--accent); }
+.lb-bar button:hover { color: var(--accent); }
+body.locked { overflow: hidden; }
+
+/* ============================================================
+   9. 手機與減少動態
+   ============================================================ */
+@media (max-width: 800px) {
+  body { font-size: 16px; }
+  .nav { display: none; }
+  .menu-btn { display: block; }
+  :root { --big: 9.2vw; --roles-bottom: 14svh; }   /* 手機：名字小一點、位置高一點 */
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { max-width: 420px; }
+  .lb-arrow { font-size: 24px; padding: 10px 4px; }
+  body.compact .brand { font-size: 18px; }
+  .show, .show:nth-child(even) { grid-template-columns: 1fr; }
+  .show:nth-child(even) .media { order: 0; }
+  .grid, .grid[data-size="medium"], .grid[data-size="small"] { --cols: 2; }
+  .grid[data-size="large"] { --cols: 1; }
+  .card .meta { flex-direction: column; gap: 0; font-size: 14px; }
+  .lb-caption { max-height: 34vh; }
+}
+@media (min-width: 801px) {
+  .menu { display: none; }   /* 電腦版不需要全螢幕選單 */
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+}
