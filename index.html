@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ★ 改這裡 1：瀏覽器分頁標題、Google 搜尋顯示的說明 -->
+  <title>Alvin Chan — Visual Development, Illustration, Animation</title>
+  <meta name="description" content="Portfolio of Alvin Chan: visual development, illustration and animation. Based in Toronto.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="home">
+
+  <!-- ★ 改這裡 2：左上角的名字（四個頁面都要改） -->
+  <a class="brand" href="index.html" aria-label="Alvin Chan, home">Alvin Chan</a>
+
+  <!-- 電腦版右上角選單。目前所在頁面有 aria-current="page"，會自動顯示底線 -->
+  <nav class="nav" aria-label="Main">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="work.html">Work</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- 手機版：Menu 按鈕 + 全螢幕選單 -->
+  <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  <div class="menu" id="menu" aria-hidden="true">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="work.html">Work</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <!-- ★ 改這裡 3：手機選單底部小字 -->
+    <p class="menu-foot">Alvin Chan<br>Toronto</p>
+  </div>
+
+  <main class="hero" id="home">
+    <!-- 幻燈片內容在 script.js 最上面（★ 改這裡 A） -->
+    <div class="slides" id="slides" aria-roledescription="carousel" aria-label="Selected works"></div>
+    <!-- ★ 改這裡 5：名字下面那行職稱 -->
+    <p class="hero-roles">Visual development / Illustration / Animation</p>
+    <div class="slide-ui">
+      <div class="dots" id="dots"></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
