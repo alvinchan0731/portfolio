@@ -67,14 +67,19 @@ const works = [
     items: [
       { src: "images/VinylHouse_TitleCard.JPG", note: "" },
       { src: "images/VinylHouse_TheHat.JPG", note: "" },
+      { src: "images/AlwaysPlayable_Character_Titlecard_Updated-1.mp4", note: "" },
       { src: "images/VinylHouse_WizbitConcept.JPG", note: "" },
+      { src: "images/VinylHouse_Interior.JPG", note: "" },
+      { src: "images/VinylHouse_AlwaysPlayableDev.JPG", note: "" },
+      { src: "images/87088b8e-36c9-4643-8358-e3563007c2bf.JPG", note: "" },
+      { src: "images/VinylHouse_VisDev.JPG", note: "" },
+      { src: "images/IMG_1383.JPG", note: "" },
+      { src: "images/VinylHouse_Wizbit.mp4", note: "" },
       { src: "images/VinylHouse_AP_Storyboard_p1.JPG", note: "" },
       { src: "images/VinylHouse_AP_Storyboard_p2.JPG", note: "" },
       { src: "images/VinylHouse_AP_Storyboard_p3.JPG", note: "" },
       { src: "images/VinylHouse_AP_Storyboard_p4.JPG", note: "" },
-      { src: "images/VinylHouse_AP_Storyboard_p5.JPG", note: "" },
-      { src: "images/VinylHouse_Interior.JPG", note: "" },
-      { src: "images/IMG_1383.JPG", note: "" }
+      { src: "images/VinylHouse_AP_Storyboard_p5.JPG", note: "" }
     ],
     desc: "One or two sentences: what the project is, your role, and the tools you used." },
   { title: "Bucket Head", category: "Visual development", year: 2026, spotlight: true, hue: 340,
@@ -92,62 +97,79 @@ const works = [
     ],
     desc: "One or two sentences: what the project is, your role, and the tools you used." },
 
-  { title: "Character sheet", category: "Character design", year: 2025, hue: 40,
-    thumb: "images/PiegOn.GIF", items: ["images/PiegOn.GIF"],
+  { title: "Piegon", category: "Animation", year: 2025, hue: 40,
+    thumb: "images/PiegOn.mp4", 
+    items: [
+        { src: "images/PiegOn.mp4"}],
     desc: "Turnaround, expressions and poses." },
-  { title: "Forest den", category: "Background", year: 2025, hue: 150,
-    thumb: "images/TheKappa_TheTurtle_&_TheFrog.JPG", items: ["images/TheKappa_TheTurtle_&_TheFrog.JPG"],
+
+  { title: "The Kappa, the turtle & the frog", category: "Visual development", year: 2025, hue: 150,
+    thumb: "images/TheKappa_TheTurtle_&_TheFrog.JPG", 
+    items: [
+         { src: "images/TheKappa_TheTurtle_&_TheFrog.JPG"}],
     desc: "Environment painting." },
-  { title: "Opening sequence", category: "Storyboard", year: 2025, hue: 270,
+  
+  { title: "Alpaca", category: "Visual development", year: 2025, hue: 270,
     thumb: "images/Alpaca.webp", 
     items: [
         { src: "images/Alpaca.webp", note: "" }, 
         { src: "images/Alpaca_enviroment.JPG", note: "" }, 
-        { src: "images/Alpaca_market.JPG", note: "" }],
+        { src: "images/Alpaca_market.JPG", note: "" },
+        { src: "images/Alpaca 15.jpg", note: "" },
+        { src: "images/Alpaca 22.jpg", note: "" },],
     desc: "Storyboard for an opening sequence." },
-  { title: "Walk cycle", category: "Animation", year: 2024, hue: 190,
+ 
+  { title: "Mayday", category: "Character design", year: 2024, hue: 190,
     thumb: "images/ATS_Mayday.JPG", items: ["images/ATS_Mayday.JPG"],
     desc: "Walk cycle study." },
-  { title: "Mood keyframe (vertical example)", category: "Visual development", year: 2024, hue: 10, ratio: "3/4", focus: "50% 25%",
+  
+  { title: "Spiderman", category: "Character design", year: 2024, hue: 10, ratio: "3/4", focus: "50% 25%",
     thumb: "images/ATS_Spiderman2099.JPG", 
     items: [
          { src: "images/ATS_Spiderman2099.JPG", note: "" },
          { src: "images/ATS_SpiderPunk.JPG", note: "" },
          { src: "images/ATS_SpidermanMiles.JPG", note: "" }],
     desc: "A vertical piece: the thumbnail is cropped to keep the top, the full image opens uncropped." },
-  { title: "Side character", category: "Character design", year: 2024, hue: 100,
+ 
+   { title: "Room", category: "Background", year: 2024, hue: 100,
     thumb: "images/Blender_room.JPG", 
     items: [
          { src: "images/Blender_room.JPG", note: "" }],
     desc: "Design exploration." },
-  { title: "City street", category: "Background", year: 2024, hue: 200,
-    thumb: "images/Luffy.GIF", 
+  
+  { title: "Luffy", category: "Character design", year: 2024, hue: 200,
+    thumb: "images/Luffy.mp4", 
     items: [
-         { src: "images/Luffy.GIF", note: "" }],
+         { src: "images/Luffy.mp4", note: "" }],
     desc: "Background paint." },
-  { title: "Short loop", category: "Animation", year: 2025, hue: 300,
+  
+  { title: "Tekkonkinkreet", category: "Character design", year: 2025, hue: 300,
     thumb: "images/Tekkonkinkreet_white.JPG", 
     items: [
          { src: "images/Tekkonkinkreet_white.JPG", note: "" }],
     desc: "A short animated loop (a single video shows a " },
-  { title: "Thumbnails page", category: "Storyboard", year: 2023, hue: 60,
+  
+  { title: "FilmStudy", category: "Background", year: 2023, hue: 60,
     thumb: "images/FilmStudy_01.JPG", 
     items: [
          { src: "images/FilmStudy_01.JPG", note: "" }],
     desc: "Storyboard page." },
-  { title: "Colour script", category: "Visual development", year: 2023, hue: 250,
+  
+  { title: "City series", category: "Background", year: 2023, hue: 250,
     thumb: "images/HongKong_City.JPG", 
     items: [
          { src:"images/HongKong_City.JPG", note:"" },
          { src:"images/HongKong_NightStudy.JPG", note:"" },
          { src:"images/CN_Tower.JPG", note:"" }],
     desc: "Colour script exploration." },
-  { title: "Hero portrait (vertical, uncropped)", category: "Character design", year: 2023, hue: 350, fit: "contain", ratio: "3/4",
+  
+  { title: "Rock, Paper, Scissors", category: "Character design", year: 2023, hue: 350, fit: "contain", ratio: "3/4",
     thumb: "images/CharacterDesign_RockPaperScissors_new.jpg", 
     items: [
          { src:"images/CharacterDesign_RockPaperScissors_new.jpg", note:"" }],
     desc: "fit: contain shows the whole vertical image inside the tile." },
-  { title: "Rooftop", category: "Background", year: 2023, hue: 130,
+  
+  { title: "Teenage Mutant Ninja Turtle series", category: "Character design", year: 2023, hue: 130,
     thumb: "images/Teenage_Mutant_Ninja_Turtle_Donatello.JPG", 
     items: [
          { src:"images/Teenage_Mutant_Ninja_Turtle_Donatello.JPG", note:"" },
@@ -155,11 +177,53 @@ const works = [
          { src:"images/Teenage_Mutant_Ninja_Turtle_Mikey.webp", note:"" }, 
          { src:"images/Teenage_Mutant_Ninja_Turtle_Raphael.JPG", note:"" }],
     desc: "Background series, day to night." },
-  { title: "Motion test", category: "Animation", year: 2023, hue: 210,
+  
+  { title: "Cold fried rice", category: "Visual development", year: 2023, hue: 210,
     thumb: "images/Cold_fried_rice.JPG", 
     items: [
          { src:"images/Cold_fried_rice.JPG", note:"" }],
-    desc: "Motion test." }
+    desc: "Motion test." },
+
+  { title: "Ekko", category: "Animation", year: 2023, hue: 130,
+    thumb: "images/Ekko_Animation.mp4", 
+    items: [
+         { src:"images/Ekko_Animation.mp4", note:"" }],
+    desc: "Background series, day to night." },
+
+  { title: "YokaiIsland", category: "Visual development", year: 2023, hue: 130,
+    thumb: "images/YokaiIsland_Map.JPG", 
+    items: [
+         { src:"images/YokaiIsland_Map.JPG", note:"" },
+         { src:"images/Yokailsland_beach.jpg", note:"" },
+         { src:"images/yokaiisalbd.JPG", note:"" }],
+    desc: "Background series, day to night." },
+
+  { title: "bubble", category: "Character design", year: 2023, hue: 130,
+    thumb: "images/bubble.jpg", 
+    items: [
+         { src:"images/bubble.jpg", note:"" }],
+    desc: "Background series, day to night." },
+
+  { title: "Taiwanese Pho Guy", category: "Visual development", year: 2023, hue: 130,
+    thumb: "images/Taiwan_PhoGuy.JPG", 
+    items: [
+         { src:"images/Taiwan_PhoGuy.JPG", note:"" }],
+    desc: "Background series, day to night." },
+
+  { title: "Akira", category: "Visual development", year: 2023, hue: 130,
+    thumb: "images/Akira.mp4", 
+    items: [
+         { src:"images/Akira.mp4", note:"" }],
+    desc: "Background series, day to night." },
+
+
+  { title: "Kelly Dont Go", category: "background", year: 2023, hue: 130,
+    thumb: "images/KellyDontGo_BackgroundArt.JPG", 
+    items: [
+         { src:"images/KellyDontGo_BackgroundArt.JPG", note:"" },
+         { src:"images/kelly dont go 2.jpg", note:"" },
+         { src:"images/kelly dont go.jpg", note:"" }],
+    desc: "Background series, day to night." },
 ];
 
 /* ============================================================
@@ -204,7 +268,7 @@ function seriesTag(w) {   // 系列 = 疊層圖示 + 數量；單一影片 = 播
 }
 function mediaHTML(w) {
   if (!w.thumb) return `<div class="ph" style="--h:${w.hue || 220}"><span class="hint">Set thumb in script.js</span></div>`;
-  if (isVideoFile(w.thumb)) return `<video src="${w.thumb}" muted loop playsinline preload="metadata"></video>`;
+  if (isVideoFile(w.thumb)) return `<video src="${w.thumb}" autoplay muted loop playsinline preload="metadata"></video>`;
   return `<img src="${w.thumb}" alt="${w.title}" loading="lazy">`;
 }
 function addParagraphs(parent, text) {   // 文字用 \n 分段
@@ -271,7 +335,7 @@ function initSlides() {
     const el = document.createElement("div");
     el.className = "slide";
     if (!s.src) el.appendChild(placeholderNode(s, "Set src in script.js"));
-    else if (isVideoFile(s.src)) el.innerHTML = `<video src="${s.src}" muted loop playsinline preload="metadata"></video>`;
+    else if (isVideoFile(s.src)) el.innerHTML = `<video src="${s.src}" muted loop playsinline preload="${i === 0 ? "auto" : "metadata"}"></video>`;
     else el.innerHTML = `<img src="${s.src}" alt="${s.caption || ""}" ${i ? 'loading="lazy"' : ""}>`;
     el.querySelectorAll("img, video").forEach((m) => m.addEventListener("error", () => m.replaceWith(placeholderNode(s, "Add " + s.src)), { once: true }));
     box.appendChild(el); els.push(el);
@@ -388,12 +452,24 @@ if (grid) {
     if (w.spotlight) {
       spotGrid.appendChild(makeEl(w, i, "card spot",
         `<div class="media">${mediaHTML(w)}${seriesTag(w)}</div>
-         <div class="meta"><strong>${w.title}</strong><span class="kind">${w.category}, ${w.year}</span><p>${w.desc || ""}</p></div>`));
+         <div class="meta"><strong>${w.title}</strong><span>${w.category}, ${w.year}</span></div>`));
     } else {
       grid.appendChild(makeEl(w, i, "card",
         `<div class="media">${mediaHTML(w)}${seriesTag(w)}</div><div class="meta"><strong>${w.title}</strong><span>${w.category}, ${w.year}</span></div>`));
     }
   });
+
+  /* 排版：All = 兩個重點作品放大 + 其他；選了分類 = 全部同樣大小的格子 */
+  function layout(c) {
+    const all = [...document.querySelectorAll(".card")].sort((a, b) => a.dataset.index - b.dataset.index);
+    all.forEach((card) => {
+      const big = c === "All" && works[card.dataset.index].spotlight;
+      card.classList.toggle("spot", !!big);
+      (big ? spotGrid : grid).appendChild(card);
+      card.classList.toggle("hide", c !== "All" && card.dataset.category !== c);
+    });
+    document.querySelectorAll(".card video").forEach((v) => { vidObserver.unobserve(v); vidObserver.observe(v); });   // 搬動後讓動態縮圖繼續播放
+  }
 
   const fbox = $("#filters");
   const extra = [...new Set(works.map((w) => w.category))].filter((c) => !CATEGORIES.includes(c));
@@ -404,7 +480,7 @@ if (grid) {
     b.addEventListener("click", () => {
       fbox.querySelectorAll("button").forEach((x) => x.classList.remove("active"));
       b.classList.add("active");
-      document.querySelectorAll("#spot-grid .card, #grid .card").forEach((card) => card.classList.toggle("hide", c !== "All" && card.dataset.category !== c));
+      layout(c);
     });
     fbox.appendChild(b);
   });
@@ -415,6 +491,7 @@ if (grid) {
    點圖片 = 放大單獨檢視
    ============================================================ */
 if ($("#project")) {
+  document.documentElement.classList.add("snap-project");   // 作品頁：一次捲動停在一張圖（樣式在 style.css 的 scroll-snap）
   const slug = new URLSearchParams(location.search).get("p");
   const wi = slugs.indexOf(slug);
   if (wi < 0) {
@@ -425,7 +502,7 @@ if ($("#project")) {
     document.title = `${w.title} — ${SITE_NAME}`;
     $("#p-meta").textContent = `${w.category}, ${w.year}`;
     $("#p-title").textContent = w.title;
-    addParagraphs($("#p-desc"), w.desc);
+    /* 作品頁不顯示說明文字，只保留名稱、分類、年份 */
     [["Role", w.role], ["Tools", w.tools]].forEach(([k, v]) => {
       if (!v) return;
       const dt = document.createElement("dt"), dd = document.createElement("dd");
@@ -433,10 +510,16 @@ if ($("#project")) {
       $("#p-facts").append(dt, dd);
     });
 
+    /* 作品頁的 mp4：靜音、循環、進入畫面自動播放，離開畫面暫停 */
+    const projVid = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause(); });
+    }, { threshold: 0.25 });
+
+    const figs = [];   // 每一張圖（右側頁碼點點用）
     const imgs = [];   // 可以放大的圖片
     items.forEach((it) => {
       const fig = document.createElement("figure");
-      fig.className = "pi reveal";
+      fig.className = "pi reveal"; figs.push(fig);
       const k = kindOf(it.src);
       let node;
       if (k === "embed") {
@@ -444,7 +527,10 @@ if ($("#project")) {
         node.src = toEmbed(it.src); node.allow = "autoplay; fullscreen; picture-in-picture"; node.allowFullscreen = true;
       } else if (k === "video") {
         node = document.createElement("video");
-        node.src = it.src; node.controls = true; node.loop = true; node.playsInline = true; node.preload = "metadata";
+        node.controls = true; node.muted = true; node.defaultMuted = true; node.autoplay = true; node.loop = true; node.playsInline = true; node.preload = "auto";
+        node.setAttribute("muted", ""); node.setAttribute("playsinline", "");
+        node.src = it.src;
+        projVid.observe(node);
       } else {
         node = document.createElement("img");
         node.src = it.src; node.alt = it.note || w.title; node.loading = "lazy"; node.className = "zoomable"; node.tabIndex = 0;
@@ -458,6 +544,29 @@ if ($("#project")) {
       body.appendChild(fig);
       revealObserver.observe(fig);
     });
+
+    /* 右側頁碼：小點點顯示目前在第幾張（2 張以上才出現；點一下可跳到那張） */
+    if (figs.length > 1) {
+      const pager = document.createElement("nav");
+      pager.className = "pager"; pager.setAttribute("aria-label", "Images");
+      const dots = figs.map((f, i) => {
+        const b = document.createElement("button");
+        b.type = "button"; b.setAttribute("aria-label", `Image ${i + 1} of ${figs.length}`);
+        b.addEventListener("click", () => {
+          if (i === 0) window.scrollTo({ top: 0, behavior: "smooth" });
+          else f.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+        pager.appendChild(b);
+        return b;
+      });
+      document.body.appendChild(pager);
+      const setOn = (n) => dots.forEach((d, k) => d.classList.toggle("on", k === n));
+      setOn(0);
+      const pageObs = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) setOn(figs.indexOf(e.target)); });
+      }, { rootMargin: "-50% 0px -50% 0px" });
+      figs.forEach((f) => pageObs.observe(f));
+    }
 
     /* 放大檢視：單獨看一張圖；同一個作品裡有多張圖時，可用 ← → 或左右滑動切換 */
     const lb = $("#lightbox"), stage = $("#lb-stage"), countEl = $("#lb-count"), noteEl = $("#lb-desc");

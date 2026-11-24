@@ -73,8 +73,8 @@ body.home { background: #fff; }
 .slides { position: absolute; inset: 0; overflow: hidden; background: #fff; }
 /* 左半邊 = 上一張，右半邊 = 下一張（看不見，只有滑鼠游標會變） */
 .zone { position: absolute; top: 0; bottom: 0; width: 50%; z-index: 3; background: none; -webkit-tap-highlight-color: transparent; }
-.zone.prev { left: 0; cursor: w-resize; }
-.zone.next { right: 0; cursor: e-resize; }
+.zone.prev { left: 0; cursor: default; }   /* 不顯示左右箭頭游標，點擊功能照常 */
+.zone.next { right: 0; cursor: default; }
 .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; }
 .slide.on { opacity: 1; }
 .slide img, .slide video, .slide .ph { width: 100%; height: 100%; object-fit: cover; }
@@ -124,11 +124,6 @@ body.home { background: #fff; }
 .grid.masonry .card { break-inside: avoid; margin-bottom: clamp(14px, 2vw, 28px); }
 .grid.masonry .card .media { aspect-ratio: var(--ratio, 4 / 3); }
 .card.spot .media { aspect-ratio: 16 / 10; }
-.card.spot .meta { flex-direction: column; align-items: flex-start; gap: 6px; padding-top: 16px; }
-.card.spot .meta strong { font-family: var(--display); font-weight: 500; font-size: clamp(22px, 2.4vw, 34px); letter-spacing: -0.01em; line-height: 1.1; }
-.card.spot .meta span.kind { color: var(--muted); }
-.card.spot .meta p { max-width: 52ch; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.card.spot .meta p:empty { display: none; }
 /* 系列標籤：疊層圖示 + 數量（單張作品沒有） */
 .series-tag { position: absolute; z-index: 2; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 99px; background: rgba(22,32,46,.72); color: #fff; font-size: 13px; font-weight: 700; line-height: 1; backdrop-filter: blur(4px); }
 /* 直式作品：fit: "contain" 完整顯示不裁切 */
@@ -136,7 +131,8 @@ body.home { background: #fff; }
 .card.contain .media > img, .card.contain .media > video { object-fit: contain; }
 .card { display: block; cursor: pointer; }
 .card .media { aspect-ratio: 4 / 3; }
-.card .meta { display: flex; justify-content: space-between; gap: 12px; padding-top: 10px; font-size: 15px; }
+.card .meta { display: flex; justify-content: space-between; gap: 12px; padding-top: 10px; font-size: 14px; }
+.card .meta strong { font-weight: 500; font-size: 14px; }   /* 作品名稱：低調一點 */
 .card .meta span { color: var(--muted); }
 .card.hide { display: none; }
 
@@ -167,7 +163,7 @@ body.home { background: #fff; }
 .back:hover { color: var(--accent); transform: translateX(-4px); }
 .project-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(20px, 5vw, 80px); align-items: end; margin-bottom: clamp(36px, 6vw, 88px); }
 .project-meta { color: var(--muted); margin-bottom: 10px; }
-.project-title { font-family: var(--display); font-weight: 500; font-size: clamp(34px, 6vw, 88px); line-height: 1.02; letter-spacing: -0.02em; }
+.project-title { font-family: var(--display); font-weight: 400; font-size: clamp(26px, 3.4vw, 46px); line-height: 1.1; letter-spacing: -0.015em; }
 .project-desc { display: grid; gap: 12px; max-width: 56ch; }
 .project-facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; margin-top: 20px; font-size: 15px; }
 .project-facts dt { color: var(--muted); }
@@ -181,6 +177,25 @@ body.home { background: #fff; }
 .pi .ph { width: 100%; aspect-ratio: 16 / 10; border-radius: 4px; }
 .pi figcaption { display: grid; gap: 8px; max-width: 62ch; margin: 16px auto 0; color: var(--muted); }
 .back-bottom { margin: clamp(48px, 7vw, 100px) 0 0; }
+
+/* 作品頁：往下捲動時，一次停在一張圖的正中間（scroll-snap） */
+html.snap-project { scroll-snap-type: y mandatory; }
+html.snap-project .project::before { content: ""; display: block; height: 1px; scroll-snap-align: start; scroll-margin-top: 400px; }   /* 頁面最上方 */
+html.snap-project .page > .section.project { padding-top: 80px; }   /* 標題往上收，第一眼就能看到標題和第一張圖 */
+html.snap-project .back { margin-bottom: 14px; }
+html.snap-project .project-head { margin-bottom: 18px; }
+html.snap-project .project-body { gap: 0; }
+html.snap-project .pi img, html.snap-project .pi video { max-height: 82svh; }
+html.snap-project .pi { scroll-snap-align: center; scroll-snap-stop: always; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; }   /* 第二張起，每張圖佔滿一整個畫面 */
+html.snap-project .pi:first-child { min-height: 0; justify-content: flex-start; scroll-snap-align: none; }   /* 第一張：和標題一起出現在第一屏 */
+html.snap-project .pi:first-child img, html.snap-project .pi:first-child video { max-height: max(240px, calc(100svh - 260px)); }
+/* 右側頁碼點點：極簡，目前這張是一條短線 */
+.pager { position: fixed; z-index: 30; right: max(2px, calc(var(--pad) / 2 - 10px)); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; }
+.pager button { position: relative; width: 20px; height: 20px; }
+.pager button::after { content: ""; position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; margin: -2px 0 0 -2px; border-radius: 2px; background: var(--ink); opacity: .2; transition: opacity .3s, height .3s var(--ease), margin .3s var(--ease); }
+.pager button.on::after { opacity: .8; height: 14px; margin-top: -7px; }
+.pager button:hover::after { opacity: .6; }
+html.snap-project .footer { scroll-snap-align: end; }                                                                                /* 頁面最下方 */
 
 /* ============================================================
    5. Lightbox：← 作品 →
