@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ★ 改這裡 1：瀏覽器分頁標題、Google 搜尋顯示的說明 -->
+  <title>About — Alvin Chan</title>
+  <meta name="description" content="About Alvin Chan, a visual development artist and animator based in Toronto.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ★ 改這裡 2：左上角的名字（四個頁面都要改） -->
+  <a class="brand" href="index.html" aria-label="Alvin Chan, home">Alvin Chan</a>
+
+  <!-- 電腦版右上角選單。目前所在頁面有 aria-current="page"，會自動顯示底線 -->
+  <nav class="nav" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="work.html">Work</a>
+    <a href="about.html" aria-current="page">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- 手機版：Menu 按鈕 + 全螢幕選單 -->
+  <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  <div class="menu" id="menu" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="work.html">Work</a>
+    <a href="about.html" aria-current="page">About</a>
+    <a href="contact.html">Contact</a>
+    <!-- ★ 改這裡 3：手機選單底部小字 -->
+    <p class="menu-foot">Alvin Chan<br>Toronto</p>
+  </div>
+
+  <main class="page">
+    <section class="section">
+      <h2 class="section-title">About</h2>
+      <div class="about-grid">
+        <div class="about-body">
+          <!-- ★ 改這裡 6：About 文字（第一段是大字） -->
+          <p class="about-lead">Hi! I'm Alvin Chan, a Toronto-based visual development artist and illustrator originally from Hong Kong.</p>
+          <p>I graduated from the Savannah College of Art and Design (SCAD) with a BFA in Illustration, focusing on concept design for animation and games. </p>
+          <p>My experience includes 2D pre-production, layout, and animation background art.</p>
+          <p>I've also illustrated children's books, including How to Fly with Alaska Chai and How to Wander (And Why!) with Alaska Chai.</p>
+        </div>
+        <!-- ★ 改這裡 7：你的照片。命名為 about.jpg 放進 images 資料夾（建議直式 4:5，例如 1200×1500） -->
+        <div class="about-photo">
+          <img src="images/about.jpg" alt="Portrait of Alvin Chan" onerror="this.outerHTML='<span class=&quot;hint&quot;>Add images/about.jpg</span>'">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ★ 改這裡 4：頁尾名字與城市 -->
+  <footer class="footer">© <span id="year"></span> Alvin Chan. Toronto.</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
